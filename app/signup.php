@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,20 +29,18 @@
                 <a href="signup.php" class="tab active">Sign Up</a>
             </div>
 
-            <form action="signup_process.php" method="POST" class="auth-form">
+            <form action="signup-action.php" method="POST" class="auth-form">
+                <?php if (!empty($_SESSION['error'])): ?>
+                    <span style="color: red; font-size: 14px; font-weight: 600;"><?= $_SESSION['error'] ?></span>
+                <?php endif; ?>
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Janak Bhandari" required>
+                    <input type="text" id="full_name" name="full_name" placeholder="Janak Bhandari" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="janak.bhandari@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+977-98XXXXXXXX" required>
                 </div>
 
                 <div class="form-group">
