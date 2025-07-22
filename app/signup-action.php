@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'helpers/redirect-to-dashboard.php';
+
 
 // Validate inputs
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -7,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-if (!isset($_POST['full_name']) || !isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['confirm_password'])  || !isset($_POST['role'])) {
+if (!isset($_POST['full_name']) || !isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['confirm_password']) || !isset($_POST['role'])) {
     header('Location: signup.php');
     exit;
 }
@@ -20,7 +21,7 @@ $role = trim($_POST['role'] ?? '');
 
 
 // Guard clause: Empty fields
-if (empty($fullName) ||  empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
+if (empty($fullName) || empty($email) || empty($password) || empty($confirmPassword) || empty($role)) {
     $_SESSION['error'] = 'Please fill in all fields';
     header('Location: signup.php');
     exit;
