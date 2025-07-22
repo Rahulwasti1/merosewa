@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeroSewa - Sign Up</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/merosewa/public/css/index.css">
 </head>
 
 <body>
     <div class="auth-container">
         <!-- Left side - Sign Up Form -->
         <div class="auth-form-container">
-            <a href="/" class="back-link">
+            <a href="/merosewa/" class="back-link">
                 ← Back to Home
             </a>
 
             <div class="logo-container">
-                <img src="assets/logo.png" alt="MeroSewa Logo">
+                <img src="/merosewa/public/assets/logo.png" alt="MeroSewa Logo">
                 <h1>MeroSewa</h1>
             </div>
 
@@ -56,29 +56,17 @@
                     <label>Select Your Role</label>
                     <div class="role-options">
                         <label class="role-option">
-                            <input type="radio" name="role" value="customer" checked>
-                            <span>Customer</span>
+                            <input type="radio" name="role" value="consumer" checked>
+                            <span>Consumer</span>
                         </label>
                         <label class="role-option">
-                            <input type="radio" name="role" value="provider">
+                            <input type="radio" name="role" value="service_provider">
                             <span>Service Provider</span>
                         </label>
                     </div>
                 </div>
-
-                <div class="terms-checkbox">
-                    <label>
-                        <input type="checkbox" required>
-                        <span>I agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a></span>
-                    </label>
-                </div>
-
                 <button type="submit" class="submit-btn">Sign Up</button>
             </form>
-
-            <div class="login-link">
-                Already have an account? <a href="index.php">Sign In</a>
-            </div>
         </div>
 
         <!-- Right side - Testimonial -->
