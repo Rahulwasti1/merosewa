@@ -1,3 +1,7 @@
+<?php
+require_once 'helpers/redirect-to-dashboard.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
