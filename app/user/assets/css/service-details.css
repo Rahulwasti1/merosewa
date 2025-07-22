@@ -1,0 +1,451 @@
+.service-details-content {
+    padding: 2rem;
+}
+
+/* Service Overview */
+.service-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Service Images */
+.service-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-image {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.main-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.thumbnail-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.thumbnail-images img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.thumbnail-images img:hover {
+    opacity: 0.8;
+}
+
+/* Service Info */
+.service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.service-header h1 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stars {
+    color: #fbbf24;
+}
+
+.reviews {
+    color: #666;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #e53e3e;
+}
+
+/* Provider Info */
+.provider-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.provider-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.provider-details h3 {
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.provider-details p {
+    margin: 0 0 0.5rem;
+    color: #666;
+}
+
+.provider-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Service Description */
+.service-description h2 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+.service-description p {
+    margin: 0 0 1.5rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.service-description h3 {
+    margin: 0 0 1rem;
+    color: #333;
+}
+
+.service-description ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #666;
+}
+
+.service-description li {
+    margin-bottom: 0.5rem;
+}
+
+/* Booking Options */
+.booking-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-book,
+.btn-contact {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-book {
+    background: #e53e3e;
+    color: white;
+}
+
+.btn-contact {
+    background: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+/* Service Details Tabs */
+.service-details-tabs {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    padding: 1rem 2rem;
+    border: none;
+    background: none;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #e53e3e;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e53e3e;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Reviews */
+.reviews-summary {
+    margin-bottom: 3rem;
+}
+
+.rating-overview {
+    display: flex;
+    gap: 3rem;
+}
+
+.rating-big {
+    text-align: center;
+}
+
+.rating-number {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.rating-stars {
+    font-size: 1.5rem;
+    color: #fbbf24;
+    margin: 0.5rem 0;
+}
+
+.total-reviews {
+    color: #666;
+}
+
+.rating-bars {
+    flex-grow: 1;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bar-container {
+    flex-grow: 1;
+    height: 8px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background: #fbbf24;
+    border-radius: 4px;
+}
+
+/* Review Items */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.review-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-meta h4 {
+    margin: 0 0 0.25rem;
+    color: #333;
+}
+
+.review-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-text {
+    margin: 0 0 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.review-images {
+    display: flex;
+    gap: 1rem;
+}
+
+.review-images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Portfolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+}
+
+.portfolio-overlay h4 {
+    margin: 0 0 0.5rem;
+}
+
+.portfolio-overlay p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* FAQ */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.faq-question h4 {
+    margin: 0;
+    color: #333;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    background: #f8f9fa;
+}
+
+.faq-answer p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .service-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .main-image img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-details-content {
+        padding: 1rem;
+    }
+
+    .thumbnail-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-options {
+        flex-direction: column;
+    }
+
+    .rating-overview {
+        flex-direction: column;
+        gap: 2rem;
+    }
+} 

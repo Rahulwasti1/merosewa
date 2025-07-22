@@ -1,0 +1,151 @@
+/* Request Service Form Layout */
+.request-service-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.request-form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Form Header */
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--text-light);
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+/* Time Slots */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.time-slot {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-slot:hover {
+    border-color: var(--primary-color);
+}
+
+.time-slot.selected {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* Location Preview */
+.location-preview {
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* File Upload Area */
+.attachment-area {
+    border: 2px dashed var(--border-color);
+    padding: 2rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.attachment-area:hover {
+    border-color: var(--primary-color);
+}
+
+.attachment-list {
+    margin-top: 1rem;
+}
+
+.attachment-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--bg-light);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+}
+
+.attachment-item i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Date Picker */
+.date-picker {
+    position: relative;
+}
+
+.date-picker input {
+    padding-right: 2.5rem;
+}
+
+.date-picker i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+/* Submit Button */
+.submit-button {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: var(--primary-dark);
+} 

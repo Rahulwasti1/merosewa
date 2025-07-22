@@ -1,0 +1,345 @@
+.booking-content {
+    padding: 2rem;
+}
+
+.booking-header {
+    margin-bottom: 2rem;
+}
+
+.booking-header h1 {
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.booking-header p {
+    color: #666;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Booking Form */
+.booking-form {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-section {
+    padding: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.booking-section:last-child {
+    border-bottom: none;
+}
+
+.booking-section h2 {
+    margin: 0 0 1.5rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Photo Upload */
+.photo-upload {
+    position: relative;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.photo-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-placeholder {
+    color: #666;
+}
+
+.upload-placeholder i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #e53e3e;
+}
+
+.photo-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.photo-preview img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Calendar */
+.calendar-picker {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar-header button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.calendar-grid {
+    padding: 1rem;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.calendar-date {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-date:hover {
+    background-color: #f8f9fa;
+}
+
+.calendar-date.selected {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.calendar-date.disabled {
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Time Slots */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.time-slot {
+    position: relative;
+    cursor: pointer;
+}
+
+.time-slot input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.time-slot span {
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.time-slot input[type="radio"]:checked + span {
+    background: #e53e3e;
+    color: white;
+    border-color: #e53e3e;
+}
+
+.time-slot input[type="radio"]:disabled + span {
+    background: #f8f9fa;
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Checkbox */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: #e53e3e;
+}
+
+/* Booking Summary */
+.summary-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 2rem;
+}
+
+.summary-card h2 {
+    margin: 0 0 1.5rem;
+    color: #333;
+}
+
+.service-preview {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.service-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.service-info h3 {
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+.service-info p {
+    margin: 0 0 0.5rem;
+    color: #666;
+}
+
+.summary-details {
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.summary-item.total {
+    font-weight: 600;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.summary-notes {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.summary-notes p {
+    margin: 0 0 0.5rem;
+}
+
+.btn-confirm {
+    width: 100%;
+    padding: 1rem;
+    background: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-content {
+        padding: 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .time-slots {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+} 
