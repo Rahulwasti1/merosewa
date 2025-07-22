@@ -1,35 +1,33 @@
 <?php
-// Check if user is logged in
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
+
+if (!isset($_SESSION['user']) || $_SESSION['user']['authenticated'] !== true) {
+    header("Location: /merosewa/login.php");
     exit();
 }
-
-// Start output buffering
 ob_start();
 ?>
 
 <div class="dashboard-content">
-    <h1>Welcome, <?php echo isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'User'; ?>!</h1>
+    <h1>Welcome, <?php echo isset($_SESSION['user']['username']) ? $_SESSION['user']['username'] : 'User'; ?>!</h1>
     <p class="subtitle">Your dashboard at a glance. Find services, manage bookings, and explore offers.</p>
 
     <div class="quick-links">
         <h2>Quick Links</h2>
         <div class="links-grid">
-            <a href="/webb/user/services.php" class="quick-link">
+            <a href="/merosewa/app/consumer/services.php" class="quick-link">
                 <i class="fas fa-tools"></i>
                 <span>Book a Service</span>
             </a>
-            <a href="/webb/user/bookings.php" class="quick-link">
+            <a href="/merosewa/app/consumer/bookings.php" class="quick-link">
                 <i class="fas fa-calendar"></i>
                 <span>View Bookings</span>
             </a>
-            <a href="/webb/user/complaints.php" class="quick-link">
+            <a href="/merosewa/app/consumer/complaints.php" class="quick-link">
                 <i class="fas fa-exclamation-circle"></i>
                 <span>Submit Request</span>
             </a>
-            <a href="/webb/user/alerts.php" class="quick-link">
+            <a href="/merosewa/app/consumer/alerts.php" class="quick-link">
                 <i class="fas fa-bell"></i>
                 <span>Check Alerts</span>
             </a>
@@ -163,6 +161,8 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-$additional_css = ['/webb/user/assets/css/dashboard.css'];
+
+
+$additional_css = ['/merosewa/app/consumer/assets/css/dashboard.css'];
 require 'layouts/provider.php';
 ?>
