@@ -67,7 +67,7 @@
 
                 <div class="nav-divider"></div>
 
-                <a href="/merosewa/app/logout.php" class="nav-link nav-link-danger">
+                <a href="/merosewa/app/logout-action.php" class="nav-link nav-link-danger">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
