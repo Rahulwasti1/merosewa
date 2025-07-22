@@ -31,7 +31,7 @@
                 <button type="submit" class="submit-btn">Send Reset Link</button>
             </form>
 
-            <a href="/merosewa/index.php" class="back-to-login">Back to Login</a>
+            <a href="/merosewa/app/login.php" class="back-to-login">Back to Login</a>
         </div>
     </div>
 </body>

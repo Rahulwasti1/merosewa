@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeroSewa - Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/merosewa/public/css/index.css">
 </head>
 
 <body>
     <div class="auth-container">
         <!-- Left side - Login Form -->
         <div class="auth-form-container">
-            <a href="index.php" class="back-link">
+            <a href="/merosewa/" class="back-link">
                 ← Back to Home
             </a>
 
             <div class="logo-container">
-                <img src="assets/logo.png" alt="MeroSewa Logo">
+                <img src="/merosewa/public/assets/logo.png" alt="MeroSewa Logo">
                 <h1>MeroSewa</h1>
             </div>
 
@@ -41,23 +41,7 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
                 </div>
-
-                <div class="role-selection">
-                    <label>Select Your Role</label>
-                    <div class="role-options">
-                        <label class="role-option">
-                            <input type="radio" name="role" value="customer" checked>
-                            <span>Customer</span>
-                        </label>
-                        <label class="role-option">
-                            <input type="radio" name="role" value="provider">
-                            <span>Service Provider</span>
-                        </label>
-                    </div>
-                </div>
-
                 <a href="forgot-password.php" class="forgot-password">Forgot Password?</a>
-
                 <button type="submit" class="submit-btn">Login</button>
             </form>
 
