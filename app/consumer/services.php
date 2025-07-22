@@ -1,15 +1,10 @@
 <?php
-require_once '../app/config/config.php';
-require_once '../app/core/Database.php';
-require_once '../app/core/Controller.php';
+
 
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
-    exit();
-}
 
-$db = new Database();
+
+// $db = new Database();
 ob_start();
 ?>
 
@@ -17,7 +12,7 @@ ob_start();
     <!-- Left Sidebar Filter -->
     <aside class="services-filter">
         <h2>Filter Services</h2>
-        
+
         <!-- Categories -->
         <div class="filter-section">
             <h3>Categories</h3>
@@ -273,7 +268,7 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-$additional_css = ['/webb/user/assets/css/services.css'];
-$additional_js = ['/webb/user/assets/js/services.js'];
+$additional_css = ['/merosewa/app/consumer/assets/css/services.css'];
+$additional_js = ['/merosewa/app/consumer/assets/js/services.js'];
 require 'layouts/provider.php';
-?> 
+?>
