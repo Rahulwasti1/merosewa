@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +31,14 @@
 
             <div class="welcome-text">
                 <h2>Welcome Back</h2>
-                <p>Log in to access your dashboard.</p>
+                <?php if (!empty($_SESSION['error'])): ?>
+                    <span style="color: red; font-size: 14px; font-weight: 600;"><?= $_SESSION['error'] ?></span>
+                <?php else: ?>
+                    <p>Log in to access your dashboard.</p>
+                <?php endif; ?>
             </div>
 
-            <form action="login_process.php" method="POST" class="auth-form">
+            <form action="login-action.php" method="POST" class="auth-form">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
