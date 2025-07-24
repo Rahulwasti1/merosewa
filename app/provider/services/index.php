@@ -153,7 +153,7 @@ $username = SessionUser::getUsername();
             $('#services-table-container').hide();
 
             $.ajax({
-                url: 'http://localhost/merosewa/api/get-services.php',
+                url: 'http://localhost/merosewa/api/getAllServicesFromLoggedInProvider.php',
                 method: 'GET',
                 dataType: 'json',
                 contentType: 'application/json',
