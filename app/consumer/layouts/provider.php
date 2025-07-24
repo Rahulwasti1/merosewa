@@ -40,7 +40,7 @@
                     <span>Dashboard</span>
                 </a>
 
-                <a href="/merosewa/app/consumer/services.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'services.php' ? 'active' : ''; ?>">
+                <a href="/merosewa/app/consumer/services/" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'services.php' ? 'active' : ''; ?>">
                     <i class="fas fa-tools"></i>
                     <span>Services</span>
                 </a>
