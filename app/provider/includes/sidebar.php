@@ -6,13 +6,13 @@
     </div>
     <nav>
 
-        <a href="dashboard.php" <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'class="active"' : ''; ?>>
+        <a href="/merosewa/app/provider/dashboard.php" <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'class="active"' : ''; ?>>
             <span>📊</span>
             <span>Dashboard</span>
         </a>
-        <a href="service-catalogue.php" <?php echo basename($_SERVER['PHP_SELF']) == 'service-catalogue.php' ? 'class="active"' : ''; ?>>
+        <a href="/merosewa/app/provider/services/" <?php echo basename($_SERVER['PHP_SELF']) == 'service-catalogue.php' ? 'class="active"' : ''; ?>>
             <span>📜</span>
-            <span>Service Catalogue</span>
+            <span>My Services</span>
         </a>
         <a href="service-requests.php" <?php echo basename($_SERVER['PHP_SELF']) == 'service-requests.php' ? 'class="active"' : ''; ?>>
             <span>📝</span>

@@ -1,5 +1,7 @@
 <?php
 require_once '../helpers/redirect-to-login.php';
+require_once '../models/SessionUser.php';
+$username = SessionUser::getUsername();
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +10,15 @@ require_once '../helpers/redirect-to-login.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS - Dashboard - MeroSewa</title>
+    <title>MeroSewa - Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/merosewa/public/css/base.css">
     <link rel="stylesheet" href="/merosewa/public/css/layout.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -117,7 +127,7 @@ require_once '../helpers/redirect-to-login.php';
                                 <span class="action-icon">📝</span>
                                 <span>Job History</span>
                             </a>
-                            <a href="new-request.php" class="action-card">
+                            <a href="services/create.php" class="action-card">
                                 <span class="action-icon">➕</span>
                                 <span>Add a Service</span>
                             </a>
@@ -125,9 +135,9 @@ require_once '../helpers/redirect-to-login.php';
                                 <span class="action-icon">👥</span>
                                 <span>View Bookings</span>
                             </a>
-                            <a href="service-catalog.php" class="action-card">
+                            <a href="services/" class="action-card">
                                 <span class="action-icon">📋</span>
-                                <span>Service Catalog</span>
+                                <span>My Services</span>
                             </a>
                         </div>
                     </div>
