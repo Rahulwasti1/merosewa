@@ -211,7 +211,7 @@ ob_start();
             maximumFractionDigits: 2
         }));
         $('#modal-service-image').attr('src', '/merosewa/' + service.image).attr('alt', service.name);
-        $('#modal-book-link').attr('href', `bookings/create?id=${encodeURIComponent(service.id)}`);
+        $('#modal-book-link').attr('href', `/merosewa/app/consumer/bookings/create?id=${encodeURIComponent(service.id)}`);
         $('#service-modal').fadeIn();
     }
 
