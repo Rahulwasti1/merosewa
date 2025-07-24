@@ -143,18 +143,15 @@ $username = SessionUser::getUsername();
     // Loading jQuery for AJAX requests
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Load services when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
             loadServices();
         });
 
         function loadServices() {
-            // Show loading indicator
-            document.getElementById('loading-indicator').style.display = 'block';
-            document.getElementById('error-message').style.display = 'none';
-            document.getElementById('services-table-container').style.display = 'none';
+            $('#loading-indicator').show();
+            $('#error-message').hide();
+            $('#services-table-container').hide();
 
-            // Make AJAX request
             $.ajax({
                 url: 'http://localhost/merosewa/api/get-services.php',
                 method: 'GET',
@@ -175,21 +172,25 @@ $username = SessionUser::getUsername();
         }
 
         function populateServicesTable(services) {
-            const tbody = document.getElementById('services-table-body');
+            var $tbody = $('#services-table-body');
 
-            // Hide loading indicator
-            document.getElementById('loading-indicator').style.display = 'none';
+            $('#loading-indicator').hide();
 
             if (services.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="7" style="text-align: center; padding: 20px; color: #666;">
-                            No services found. <a href="new-request.php">Add your first service</a>
-                        </td>
-                    </tr>
-                `;
+                $tbody.html(`
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 20px; color: #666;">
+                        No services found. <a href="new-request.php">Add your first service</a>
+                    </td>
+                </tr>
+            `);
             } else {
-                tbody.innerHTML = services.map(service => `
+                var rows = services.map(function(service) {
+                    var description = service.description.length > 100 ?
+                        escapeHtml(service.description.substring(0, 100)) + '...' :
+                        escapeHtml(service.description);
+
+                    return `
                     <tr>
                         <td>${escapeHtml(service.id)}</td>
                         <td>
@@ -205,35 +206,44 @@ $username = SessionUser::getUsername();
                             </div>
                         </td>
                         <td>
-                            <div class="service-description">
-                                ${escapeHtml(service.description.substring(0, 100))}${service.description.length > 100 ? '...' : ''}
-                            </div>
+                            <div class="service-description">${description}</div>
                         </td>
                         <td>Rs. ${parseFloat(service.rate_per_hour).toLocaleString('en-NP', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                         <td>${escapeHtml(service.service_provider)}</td>
                         <td>
-                            <button class="btn-link-edit" onclick="editService(${service.id})" style="margin-left: 5px;">✏️Edit</button>
-                            <button class="btn-link-delete" onclick="deleteService(${service.id})">🗑️Delete</button>
+                            <button class="btn-link-edit" style="margin-left: 5px;" data-id="${service.id}">✏️Edit</button>
+                            <button class="btn-link-delete" data-id="${service.id}">🗑️Delete</button>
                         </td>
                     </tr>
-                `).join('');
+                `;
+                }).join('');
+
+                $tbody.html(rows);
+
+                // Attach click handlers using jQuery
+                $('.btn-link-edit').off('click').on('click', function() {
+                    var serviceId = $(this).data('id');
+                    editService(serviceId);
+                });
+
+                $('.btn-link-delete').off('click').on('click', function() {
+                    var serviceId = $(this).data('id');
+                    deleteService(serviceId);
+                });
             }
 
-            // Show table
-            document.getElementById('services-table-container').style.display = 'block';
+            $('#services-table-container').show();
         }
 
         function showError(message) {
-            document.getElementById('loading-indicator').style.display = 'none';
-            document.getElementById('services-table-container').style.display = 'none';
-            document.getElementById('error-message').style.display = 'block';
-            document.getElementById('error-message').querySelector('p').textContent = message;
+            $('#loading-indicator').hide();
+            $('#services-table-container').hide();
+            $('#error-message').show();
+            $('#error-message p').text(message);
         }
 
         function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+            return $('<div>').text(text).html();
         }
 
         function deleteService(serviceId) {
@@ -244,6 +254,7 @@ $username = SessionUser::getUsername();
             window.location.href = `edit.php?id=${serviceId}`;
         }
     </script>
+
 </body>
 
 </html>
