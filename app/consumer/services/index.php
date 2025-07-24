@@ -3,8 +3,22 @@ session_start();
 // $db = new Database();
 ob_start();
 ?>
-
+<!-- Success and Error Messages -->
+<?php if (isset($_SESSION['success_message'])): ?>
+    <span style="color: green; display: block; margin: 10px 0;">
+        <?= htmlspecialchars($_SESSION['success_message']) ?>
+    </span>
+    <?php unset($_SESSION['success_message']); // Clear the message
+    ?>
+<?php elseif (isset($_SESSION['error_message'])): ?>
+    <span style="color: red; display: block; margin: 10px 0;">
+        <?= htmlspecialchars($_SESSION['error_message']) ?>
+    </span>
+    <?php unset($_SESSION['error_message']); // Clear the message
+    ?>
+<?php endif; ?>
 <div class="services-container">
+
     <!-- Left Sidebar Filter -->
     <aside class="services-filter">
         <h2>Filter Services</h2>
@@ -211,7 +225,7 @@ ob_start();
             maximumFractionDigits: 2
         }));
         $('#modal-service-image').attr('src', '/merosewa/' + service.image).attr('alt', service.name);
-        $('#modal-book-link').attr('href', `/merosewa/app/consumer/bookings/create?id=${encodeURIComponent(service.id)}`);
+        $('#modal-book-link').attr('href', `/merosewa/app/consumer/bookings/create.php?id=${encodeURIComponent(service.id)}`);
         $('#service-modal').fadeIn();
     }
 
