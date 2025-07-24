@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job History - MeroSewa</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="/merosewa/public/css/base.css">
+    <link rel="stylesheet" href="/merosewa/public/css/layout.css">
     <link rel="stylesheet" href="css/job-history.css">
 </head>
+
 <body>
     <div class="dashboard-container">
         <?php include 'includes/sidebar.php'; ?>
@@ -171,4 +173,5 @@
 
     <script src="js/job-history.js"></script>
 </body>
-</html> 
+
+</html>

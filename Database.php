@@ -15,9 +15,7 @@ class Database
     {
         try {
             $this->conn = new PDO("mysql:host=$this->host;dbname=$this->db_name", $this->username, $this->password, $this->options);
-            echo "<script>console.log('Connection Established');</script>";
         } catch (\PDOException $e) {
-            echo "<script>console.log('Connection Failed');</script>";
             throw new \PDOException($e->getMessage(), (int)$e->getcode());
         }
     }
