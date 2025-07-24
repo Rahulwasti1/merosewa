@@ -140,6 +140,8 @@ $username = SessionUser::getUsername();
         }
     </style>
 
+    // Loading jQuery for AJAX requests
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         // Load services when page loads
         document.addEventListener('DOMContentLoaded', function() {
@@ -153,29 +155,23 @@ $username = SessionUser::getUsername();
             document.getElementById('services-table-container').style.display = 'none';
 
             // Make AJAX request
-            fetch('http://localhost/merosewa/api/get-services.php', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
+            $.ajax({
+                url: 'http://localhost/merosewa/api/get-services.php',
+                method: 'GET',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function(data) {
                     if (data.success) {
                         populateServicesTable(data.services);
                     } else {
                         showError(data.message || 'Failed to load services');
                     }
-                })
-                .catch(error => {
+                },
+                error: function(xhr, status, error) {
                     console.error('Error:', error);
                     showError('Failed to load services. Please check your connection.');
-                });
+                }
+            });
         }
 
         function populateServicesTable(services) {
