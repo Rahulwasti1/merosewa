@@ -5,30 +5,27 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
-require_once '../app/helpers/redirect-to-login.php';
-require_once '../app/models/SessionUser.php';
+
 require_once '../Database.php';
 
 try {
     // Initialize database connection
     $db = new Database();
 
-    // Get current user's services
-    $userId = SessionUser::getId();
-
-    if (!$userId) {
-        http_response_code(401);
-        echo json_encode([
-            'success' => false,
-            'message' => 'User not authenticated'
-        ]);
-        exit;
-    }
-
-    // Fetch services for the current user
     $services = $db->selectAll(
-        "SELECT id, service_provider, name, description, rate_per_hour, image FROM service WHERE service_provider = ? ORDER BY id DESC",
-        [$userId]
+        "SELECT
+            s.id,
+            u.full_name as service_provider,
+            s.name,
+            s.description,
+            s.rate_per_hour,
+            s.image
+        FROM
+            service AS s
+        JOIN
+            users AS u ON s.service_provider = u.id
+        ORDER BY
+            s.id DESC;"
     );
 
     // Return success response

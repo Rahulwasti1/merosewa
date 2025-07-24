@@ -160,7 +160,7 @@ ob_start();
 
     function loadServices() {
         $.ajax({
-            url: 'http://localhost/merosewa/api/get-all-services.php',
+            url: 'http://localhost/merosewa/api/getAllServices.php',
             method: 'GET',
             dataType: 'json',
             success: function(response) {
