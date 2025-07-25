@@ -79,7 +79,20 @@ require_once '../../helpers/redirect-to-login.php';
 
                 <section class="bookings-section">
                     <h2>Upcoming Bookings</h2>
-
+                    <!-- Success and Error Messages -->
+                    <?php if (isset($_SESSION['success_message'])): ?>
+                        <span style="color: green; display: block; margin: 10px 0;">
+                            <?= htmlspecialchars($_SESSION['success_message']) ?>
+                        </span>
+                        <?php unset($_SESSION['success_message']); // Clear the message
+                        ?>
+                    <?php elseif (isset($_SESSION['error_message'])): ?>
+                        <span style="color: red; display: block; margin: 10px 0;">
+                            <?= htmlspecialchars($_SESSION['error_message']) ?>
+                        </span>
+                        <?php unset($_SESSION['error_message']); // Clear the message
+                        ?>
+                    <?php endif; ?>
                     <div class="bookings-table">
                         <table>
                             <thead>
@@ -158,7 +171,8 @@ require_once '../../helpers/redirect-to-login.php';
             vertical-align: middle;
         }
 
-        .btn-link-accept {
+        .btn-link-accept,
+        .btn-link-complete {
             background: none;
             border: 1px solid #38a169;
             color: #38a169;
@@ -185,7 +199,8 @@ require_once '../../helpers/redirect-to-login.php';
         }
 
 
-        .btn-link-accept:hover {
+        .btn-link-accept:hover,
+        .btn-link-complete:hover {
             background-color: #38a169;
             color: white;
         }
@@ -263,23 +278,25 @@ require_once '../../helpers/redirect-to-login.php';
                 } else if (booking.status === 'ACCEPTED') {
                     statusClass = 'completed';
                 }
-                const row = `
-            <tr>
-                <td><div>${booking.service_name}</div></td>
-                <td><div>${booking.consumer_name}</div> </td>
-                <td>
-                    <div class="booking-message">${booking.message}</div>
-                </td>
-                <td>${booking.booking_date}</td>
-                <td style="height:100%; display: flex; align-items: center; justify-content: center;">
-                    <span class="status-badge ${statusClass}">${booking.status}</span>
-                </td>
-                <td>
-                    <button class="btn-link-accept" style="margin-left: 5px;" data-id="${booking.id}">Accept</button>
-                    <button class="btn-link-cancel" data-id="${booking.id}">Cancel</button>
-                </td>
-            </tr>
-        `;
+                const actionButtons = booking.status === 'PENDING' ?
+                    `<button class="btn-link-accept" data-id="${booking.id}">Accept</button>
+                    <button class="btn-link-cancel" data-id="${booking.id}">Cancel</button>` :
+                    `<button class="btn-link-complete" data-id="${booking.id}">Complete Job</button>`;
+                const row =
+                    `<tr>
+                        <td><div>${booking.service_name}</div></td>
+                        <td><div>${booking.consumer_name}</div></td>
+                        <td>
+                            <div class="booking-message">${booking.message}</div>
+                        </td>
+                        <td>${booking.booking_date}</td>
+                        <td style="height:100%; display: flex; align-items: center; justify-content: center;">
+                            <span class="status-badge ${statusClass}">${booking.status}</span>
+                        </td>
+                        <td>
+                            ${actionButtons}
+                        </td>
+                    </tr>`;
                 tbody.append(row);
                 $('.btn-link-accept').off('click').on('click', function() {
                     var bookingId = $(this).data('id');
