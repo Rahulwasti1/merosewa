@@ -1,6 +1,8 @@
 <?php
 require_once '../../helpers/redirect-to-login.php';
 
+
+function cancelBooking() {}
 ob_start();
 ?>
 
@@ -46,7 +48,20 @@ ob_start();
     <!-- Upcoming & Active Bookings -->
     <section class="bookings-section">
         <h2>Upcoming & Active Bookings</h2>
-
+        <!-- Success and Error Messages -->
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <span style="color: green; display: block; margin: 10px 0;">
+                <?= htmlspecialchars($_SESSION['success_message']) ?>
+            </span>
+            <?php unset($_SESSION['success_message']); // Clear the message
+            ?>
+        <?php elseif (isset($_SESSION['error_message'])): ?>
+            <span style="color: red; display: block; margin: 10px 0;">
+                <?= htmlspecialchars($_SESSION['error_message']) ?>
+            </span>
+            <?php unset($_SESSION['error_message']); // Clear the message
+            ?>
+        <?php endif; ?>
         <div class="booking-cards" id="booking-cards-container">
             <!-- Loading Indicator -->
             <div id="loading-indicator" class="loading-container" style="text-align: center; padding: 20px;">
@@ -159,7 +174,7 @@ ob_start();
 
     function loadBookings() {
         $.ajax({
-            url: 'http://localhost/merosewa/api/getAllBookingsFromLoggedInConsumer.php',
+            url: 'http://localhost/merosewa/api/getAllBookingsFromLoggedInUser.php',
             method: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -198,7 +213,8 @@ ob_start();
         const container = $('#booking-cards-container');
         container.empty();
 
-        bookings.forEach(function(booking) {
+        bookings.forEach(booking => {
+            console.log(booking)
             if (booking.status === 'PENDING' || booking.status === 'CONFIRMED') {
                 const badgeClass = booking.status === 'PENDING' ? 'upcoming' : 'active';
                 const cardHtml = `
@@ -218,14 +234,27 @@ ob_start();
                         </div>
                         <div class="booking-actions">
                             <button class="btn-view" onclick='viewBookingDetails(${JSON.stringify(booking)})'>View Details</button>
-                            <button class="btn-cancel">Cancel</button>
+                            <button data-id="${booking.id}" class="btn-cancel">Cancel</button>
                         </div>
                     </div>
                 </div>
             `;
                 container.append(cardHtml);
+                $('.btn-cancel').off('click').on('click', function() {
+                    var bookingId = $(this).data('id');
+                    const confirmed = confirm("Are you sure you want to cancel this booking?");
+                    if (confirmed) {
+                        cancelBooking(bookingId);
+                    }
+                });
             }
         });
+    }
+
+
+
+    function cancelBooking(bookingId) {
+        window.location.href = `cancel.php?id=${bookingId}`;
     }
 
     function populateInactiveBookings(bookings) {

@@ -228,7 +228,10 @@ $username = SessionUser::getUsername();
 
                 $('.btn-link-delete').off('click').on('click', function() {
                     var serviceId = $(this).data('id');
-                    deleteService(serviceId);
+                    const confirmed = confirm("Are you sure you want to cancel this booking?");
+                    if (confirmed) {
+                        deleteService(serviceId);
+                    }
                 });
             }
 
