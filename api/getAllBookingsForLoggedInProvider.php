@@ -18,21 +18,19 @@ try {
     $services = $db->selectAll(
         "SELECT
             b.id,
+            u.full_name as consumer_name,
             b.message,
             b.status,
             b.booking_date,
             s.name as service_name,
-            s.description as service_description,
-            s.rate_per_hour as service_hourly_rate,
-            s.image as service_image,
-            u.full_name as provider_name
+            s.rate_per_hour as service_hourly_rate
         FROM
             booking AS b
         JOIN
             service AS s ON s.id = b.service
         JOIN
-            users as u ON s.service_provider = u.id
-        WHERE b.consumer = ?
+            users as u ON b.consumer = u.id
+        WHERE s.service_provider = ?
         ORDER BY
             b.booking_date DESC;",
         [$userId]
