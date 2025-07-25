@@ -45,7 +45,14 @@ $pageTitle = 'Edit Service Details';
                         <h1 class="text-2xl font-bold leading-tight tracking-tight text-red-700 md:text-2xl">
                             Update Service Information
                         </h1>
-                        <?php if (isset($_SESSION['error_message'])): ?>
+                        <!-- Success and Error Messages -->
+                        <?php if (isset($_SESSION['success_message'])): ?>
+                            <span style="color: green; display: block; margin: 10px 0;">
+                                <?= htmlspecialchars($_SESSION['success_message']) ?>
+                            </span>
+                            <?php unset($_SESSION['success_message']); // Clear the message
+                            ?>
+                        <?php elseif (isset($_SESSION['error_message'])): ?>
                             <span style="color: red; display: block; margin: 10px 0;">
                                 <?= htmlspecialchars($_SESSION['error_message']) ?>
                             </span>
