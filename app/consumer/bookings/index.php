@@ -273,7 +273,7 @@ ob_start();
             const row = `
             <tr>
                 <td>${booking.service_name}</td>
-                <td>${booking.provicer_name}</td>
+                <td>${booking.provider_name}</td>
                 <td>${booking.booking_date}</td>
                 <td><span class="status ${statusClass}">${booking.status}</span></td>
             </tr>
