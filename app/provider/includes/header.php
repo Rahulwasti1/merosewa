@@ -1,3 +1,8 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/merosewa/app/models/SessionUser.php';
+$username = SessionUser::getUserName();
+?>
+
 <!-- Header -->
 <header>
     <div>
@@ -11,7 +16,7 @@
             <span class="badge">3</span>
         </div>
         <a href="/merosewa/app/logout-action.php" class="logout">
-            <span>🚪</span>
+            <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span>
         </a>
     </div>

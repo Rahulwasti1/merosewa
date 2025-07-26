@@ -1,7 +1,3 @@
-<?php
-$pageTile = $_SESSION['page_title'] ?? 'MeroSewa - Your Local Service Marketplace';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +5,7 @@ $pageTile = $_SESSION['page_title'] ?? 'MeroSewa - Your Local Service Marketplac
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MeroSewa - Your trusted platform for local services in Nepal. Connect with verified service providers for all your home and business needs.">
-    <title><?= $pageTitle ?></title>
+    <title>MeroSewa - Your Local Service Marketplace</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">

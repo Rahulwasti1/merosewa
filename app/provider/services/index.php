@@ -1,7 +1,5 @@
 <?php
 require_once '../../helpers/redirect-to-login.php';
-require_once '../../models/SessionUser.php';
-$username = SessionUser::getUsername();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +10,8 @@ $username = SessionUser::getUsername();
     <title>MeroSewa - My Services</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
-
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,7 +227,7 @@ $username = SessionUser::getUsername();
 
                 $('.btn-link-delete').off('click').on('click', function() {
                     var serviceId = $(this).data('id');
-                    const confirmed = confirm("Are you sure you want to cancel this booking?");
+                    const confirmed = confirm("Are you sure you want to delete this service?");
                     if (confirmed) {
                         deleteService(serviceId);
                     }

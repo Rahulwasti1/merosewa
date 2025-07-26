@@ -1,25 +1,37 @@
 <?php
 require_once '../../helpers/redirect-to-login.php';
+require_once '../../models/SessionUser.php';
 require_once '../../../Database.php';
 
 $db = new Database();
 
-$serviceId = $_GET['id'] ?? null;
-
-if (null == $serviceId) {
-    header("Location: /merosewa/app/consumer/services/");
+unset($_SESSION['success_message'], $_SESSION['error_message']);
+$jobId = $_GET['id'] ?? null;
+if (null === $jobId) {
+    $_SESSION['error_message'] = "Invalid Job ID.";
+    header('Location: index.php');
     exit;
 }
 
-$service = $db->selectFirst(
+$userId = SessionUser::getId();
+$jobDetails = $db->selectFirst(
     "SELECT
-            *
-        FROM
-            service
-        WHERE
-            id = ?;",
-    [$serviceId]
+        s.name as service_name,
+        p.full_name as provider_name
+    FROM job as j
+    JOIN booking as b ON b.id =j.booking
+    JOIN service as s ON b.service = s.id
+    JOIN users as p ON p.id = s.service_provider
+    WHERE b.consumer = ? AND j.id = ?
+    LIMIT 1;",
+    [$userId, $jobId]
 );
+
+if (!$jobDetails) {
+    $_SESSION['error_message'] = "Job not found.";
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +39,11 @@ $service = $db->selectFirst(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeroSewa - Book a Service</title>
+    <title>MeroSewa - Leave a Feedback</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
-
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +58,7 @@ $service = $db->selectFirst(
                 <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-lg xl:p-0">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                            Booking for <?= htmlspecialchars($service['name'] ?? '') ?>
+                            How did you like <?= htmlspecialchars($jobDetails['provider_name'] ?? '') ?>'s service <?= htmlspecialchars($jobDetails['service_name'] ?? '') ?>?
                         </h1>
                         <!-- Success and Error Messages -->
                         <?php if (isset($_SESSION['success_message'])): ?>
@@ -61,44 +74,25 @@ $service = $db->selectFirst(
                             <?php unset($_SESSION['error_message']); // Clear the message
                             ?>
                         <?php endif; ?>
-                        <form action="store.php?id=<?= $serviceId ?>" method="post" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
-                            <div class="text-center mb-6">
-                                <img src="/merosewa/<?= htmlspecialchars($service['image']) ?>"
-                                    alt="<?= htmlspecialchars($service['name']) ?>"
-                                    class="w-32 h-32 object-cover rounded-lg border border-gray-300 mx-auto mb-3">
-                                <p class="text-gray-700 text-sm">Price: <span class="font-semibold text-green-600">NPR <?= htmlspecialchars($service['rate_per_hour']) ?>/Hr</span></p>
-                            </div>
-
+                        <form action="store.php?id=<?= $jobId ?>" method="post" enctype="multipart/form-data" class="space-y-4 md:space-y-6">
                             <!-- Booking Date Picker -->
                             <div class="mb-4">
-                                <label for="booking_date" class="block mb-2 text-sm font-medium text-gray-900">Booking Date *</label>
-                                <input type="date"
-                                    name="booking_date"
-                                    id="booking_date"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
-                                    required>
-                            </div>
-
-                            <!-- Booking Message -->
-                            <div class="mb-4">
-                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Message *</label>
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Feedback *</label>
                                 <textarea
-                                    name="message"
+                                    name="feedback"
                                     id="message"
                                     rows="4"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
-                                    placeholder="Write a message for the provider..." required></textarea>
+                                    placeholder="Write about your service experience..." required></textarea>
                             </div>
-
-
                             <!-- Submit Button -->
                             <button type="submit"
                                 class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                Book Now
+                                Submit
                             </button>
 
                             <!-- Cancel Button -->
-                            <a href="/merosewa/app/consumer/services"
+                            <a href="/merosewa/app/provider/bookings/"
                                 class="block w-full text-center text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">
                                 Cancel
                             </a>

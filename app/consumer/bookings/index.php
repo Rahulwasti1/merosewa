@@ -1,8 +1,6 @@
 <?php
 require_once '../../helpers/redirect-to-login.php';
-
-
-function cancelBooking() {}
+$_SESSION['page_title'] = "MeroSewa - My Bookings";
 ob_start();
 ?>
 
@@ -47,7 +45,7 @@ ob_start();
 
     <!-- Upcoming & Active Bookings -->
     <section class="bookings-section">
-        <h2>Upcoming & Active Bookings</h2>
+        <h2>Upcoming Bookings</h2>
         <!-- Success and Error Messages -->
         <?php if (isset($_SESSION['success_message'])): ?>
             <span style="color: green; display: block; margin: 10px 0;">
@@ -87,39 +85,36 @@ ob_start();
                 <p><strong>Message:</strong> <span id="modal-booking-message"></span></p>
             </div>
         </div>
+    </section>
+    <section class="bookings-section">
+        <h2>Archived Bookings</h2>
 
-</div>
-
-</section>
-<section class="bookings-section">
-    <h2>Inactive Bookings</h2>
-
-    <div class="bookings-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Service</th>
-                    <th>Provider</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="inactive-bookings-body">
-                <tr>
-                    <td colspan="4">
-                        <div class="booking-cards" id="booking-cards-container">
-                            <!-- Loading Indicator -->
-                            <div id="loading-indicator" class="loading-container" style="text-align: center; padding: 20px;">
-                                <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 2s linear infinite; margin: 0 auto;"></div>
-                                <p style="margin-top: 10px; color: #666;">Loading services...</p>
+        <div class="bookings-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Provider</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="inactive-bookings-body">
+                    <tr>
+                        <td colspan="4">
+                            <div class="booking-cards" id="booking-cards-container">
+                                <!-- Loading Indicator -->
+                                <div id="loading-indicator" class="loading-container" style="text-align: center; padding: 20px;">
+                                    <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 2s linear infinite; margin: 0 auto;"></div>
+                                    <p style="margin-top: 10px; color: #666;">Loading services...</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </div>
 
 <style>
@@ -215,8 +210,8 @@ ob_start();
 
         bookings.forEach(booking => {
             console.log(booking)
-            if (booking.status === 'PENDING' || booking.status === 'CONFIRMED') {
-                const badgeClass = booking.status === 'PENDING' ? 'upcoming' : 'active';
+            if (booking.status === 'PENDING' || booking.status === 'ACCEPTED') {
+                const badgeClass = booking.status === 'PENDING' ? 'upcoming' : 'completed';
                 const cardHtml = `
                 <div class="booking-card">
                     <img class="service-image" src="/merosewa/${booking.service_image}" alt="${booking.service_name}" />
@@ -304,6 +299,5 @@ ob_start();
 <?php
 $content = ob_get_clean();
 $additional_css = ['/merosewa/app/consumer/assets/css/bookings.css'];
-$additional_js = ['/merosewa/app/consumer/assets/js/bookings.js'];
 require '../layouts/provider.php';
 ?>

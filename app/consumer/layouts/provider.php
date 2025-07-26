@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeroSewa - User Dashboard</title>
+    <title><?= $_SESSION['page_title'] ?? 'MeroSewa' ?></title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -35,32 +36,34 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="/merosewa/app/consumer/dashboard.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'dashboard.php' ? 'active' : ''; ?>">
+                <?php
+                $current_uri = $_SERVER['REQUEST_URI'];
+                ?>
+                <a href="/merosewa/app/consumer/dashboard.php"
+                    class="<?php echo strpos($current_uri, 'dashboard.php') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-chart-line"></i>
                     <span>Dashboard</span>
                 </a>
 
-                <a href="/merosewa/app/consumer/services/" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'services.php' ? 'active' : ''; ?>">
+                <a href="/merosewa/app/consumer/services/"
+                    class="<?php echo strpos($current_uri, '/services/') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-tools"></i>
                     <span>Services</span>
                 </a>
 
-                <a href="/merosewa/app/consumer/bookings/" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'bookings.php' ? 'active' : ''; ?>">
+                <a href="/merosewa/app/consumer/bookings/"
+                    class="<?php echo strpos($current_uri, '/bookings/') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-calendar-alt"></i>
                     <span>My Bookings</span>
                 </a>
 
-                <a href="/merosewa/app/consumer/job-history.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'job-history.php' ? 'active' : ''; ?>">
+                <a href="/merosewa/app/consumer/jobs/"
+                    class="<?php echo strpos($current_uri, '/jobs/') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-history"></i>
                     <span>Job History</span>
                 </a>
-
-                <a href="/merosewa/app/consumer/complaints.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'complaints.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Complaints</span>
-                </a>
-
-                <a href="/merosewa/app/consumer/profile.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'profile.php' ? 'active' : ''; ?>">
+                <a href="/merosewa/app/consumer/profile/"
+                    class="<?php echo strpos($current_uri, '/profile/') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-user-circle"></i>
                     <span>Profile</span>
                 </a>
