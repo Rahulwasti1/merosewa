@@ -1,4 +1,5 @@
 <?php
+require_once 'app/helpers/redirect-to-dashboard.php';
 require_once 'includes/header.php';
 require_once 'Database.php';
 $db = new Database();
