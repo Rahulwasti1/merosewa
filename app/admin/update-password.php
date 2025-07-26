@@ -1,11 +1,11 @@
 <?php
-require_once '../../helpers/redirect-to-login.php';
-require_once '../../models/SessionUser.php';
-require_once '../../../Database.php';
-require_once '../../../Upload.php';
+require_once '../helpers/redirect-to-login.php';
+require_once '../models/SessionUser.php';
+require_once '../../Database.php';
+require_once '../../Upload.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 }
 // Clear old session messages on new request
@@ -18,7 +18,7 @@ try {
     $existingUser = $db->selectFirst("SELECT * FROM users WHERE id = ?;", [$userId]);
     if (!$existingUser) {
         $_SESSION['pw_error_message'] = "User not found.";
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
 
@@ -27,7 +27,7 @@ try {
         empty($_POST['old_password']) || empty($_POST['new_password']) || empty($_POST['confirm_password'])
     ) {
         $_SESSION['pw_error_message'] = "Malformed request body.";
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit;
     }
     $oldPassword = $_POST['old_password'];
@@ -36,13 +36,13 @@ try {
 
     if (!password_verify($oldPassword, $existingUser['password_hash'])) {
         $_SESSION['pw_error_message'] = 'Incorrect Password.';
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
 
     if ($newPassword !== $confirmPassword) {
         $_SESSION['pw_error_message'] = 'New password and pasword confirmation do not match..';
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
 
@@ -52,10 +52,10 @@ try {
     );
 
     $_SESSION['pw_success_message'] = "Password Successfully Updated!";
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 } catch (Exception $e) {
     $_SESSION['pw_error_message'] = $e->getMessage();
-    header("Location: index.php");
+    header("Location: dashboard.php");
     exit;
 }

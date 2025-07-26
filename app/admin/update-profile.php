@@ -1,11 +1,11 @@
 <?php
-require_once '../../helpers/redirect-to-login.php';
-require_once '../../models/SessionUser.php';
-require_once '../../../Database.php';
-require_once '../../../Upload.php';
+require_once '../helpers/redirect-to-login.php';
+require_once '../models/SessionUser.php';
+require_once '../../Database.php';
+require_once '../../Upload.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 }
 // Clear old session messages on new request
@@ -18,7 +18,7 @@ try {
     $existingUser = $db->selectFirst("SELECT * FROM users WHERE id = ?;", [$userId]);
     if (!$existingUser) {
         $_SESSION['error_message'] = "Service not found or you are not authorized.";
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
 
@@ -27,7 +27,7 @@ try {
         (empty($_POST['full_name']) && empty($_FILES['profile_photo'])) || !empty($_POST['email'])
     ) {
         $_SESSION['error_message'] = "Malformed request body.";
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit;
     }
     $full_name = $existingUser['full_name'];
@@ -42,20 +42,20 @@ try {
             [$full_name, $userId]
         );
         $_SESSION['success_message'] = "Profile Successfully Updated!";
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
     // Handle image upload
     $pathPrefix = 'uploads/profile/';
-    $oldImagePath = "../../../" . $existingUser['profile_picture'];
+    $oldImagePath = "../../" . $existingUser['profile_picture'];
     $uploader = new Upload(
         $_FILES['profile_photo'],
-        '../../../uploads/profile/'
+        '../../uploads/profile/'
     );
     $result = $uploader->uploadFile();
     if (!$result['status']) {
         $_SESSION['error_message'] = $result['message'];
-        header('Location: index.php');
+        header('Location: dashboard.php');
         exit;
     }
 
@@ -76,10 +76,10 @@ try {
     );
 
     $_SESSION['success_message'] = "Profile Successfully Updated!";
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 } catch (Exception $e) {
     $_SESSION['error_message'] = $e->getMessage();
-    header("Location: index.php");
+    header("Location: dashboard.php");
     exit;
 }

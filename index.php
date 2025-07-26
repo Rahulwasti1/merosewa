@@ -1,5 +1,13 @@
 <?php
+require_once 'app/helpers/redirect-to-dashboard.php';
 require_once 'includes/header.php';
+require_once 'Database.php';
+$db = new Database();
+
+$adminUsers = $db->selectAll("SELECT role FROM users WHERE role = 'ADMIN';");
+if (empty($adminUsers)) {
+    $db->insert("INSERT INTO users(full_name,role, email, password_hash) VALUES('Admin User','ADMIN', 'admin@merosewa.com', ?);", [password_hash('qwertyuiop', PASSWORD_DEFAULT)]);
+}
 ?>
 
 <main>
