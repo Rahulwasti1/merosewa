@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - MeroSewa</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="/merosewa/public/css/base.css">
+    <link rel="stylesheet" href="/merosewa/public/css/layout.css">
     <link rel="stylesheet" href="css/profile.css">
 </head>
+
 <body>
     <div class="dashboard-container">
         <?php include 'includes/sidebar.php'; ?>
@@ -51,10 +53,6 @@
                                 <label>Phone Number</label>
                                 <input type="tel" value="+977 9812345678">
                             </div>
-                            <div class="form-group full-width">
-                                <label>Bio / Description</label>
-                                <textarea rows="3">Experienced electrician with over 15 years in the field, specializing in residential wiring, fault detection, and smart home installations. Committed to providing safe, efficient, and reliable service across Kathmandu Valley. I prioritize customer satisfaction and clear communication.</textarea>
-                            </div>
                         </div>
                         <button class="btn-primary">Save Personal Details</button>
                     </div>
@@ -68,75 +66,7 @@
                         <button class="btn-primary">Get Verified Badge</button>
                     </div>
 
-                    <!-- Service Provider Settings Section -->
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2>🛠️ Service Provider Settings</h2>
-                            <p>Configure your service settings, area, and availability.</p>
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Service Categories</label>
-                                <select>
-                                    <option>Electrician</option>
-                                </select>
-                                <small>You can select multiple categories (max 3)</small>
-                            </div>
-                            <div class="form-group">
-                                <label>Service Areas</label>
-                                <input type="text" value="Kathmandu, Lalitpur, Bhaktapur">
-                                <small>List your areas and provide service radius if applicable by commas.</small>
-                            </div>
-                            <div class="form-group full-width">
-                                <label>Working Hours</label>
-                                <div class="working-hours-grid">
-                                    <div class="day-hours">
-                                        <span>Mon:</span>
-                                        <input type="time" value="09:00">
-                                        <span>to</span>
-                                        <input type="time" value="17:00">
-                                    </div>
-                                    <div class="day-hours">
-                                        <span>Tue:</span>
-                                        <input type="time" value="09:00">
-                                        <span>to</span>
-                                        <input type="time" value="17:00">
-                                    </div>
-                                    <div class="day-hours">
-                                        <span>Wed:</span>
-                                        <input type="time" value="09:00">
-                                        <span>to</span>
-                                        <input type="time" value="17:00">
-                                    </div>
-                                    <div class="day-hours">
-                                        <span>Thu:</span>
-                                        <input type="time" value="09:00">
-                                        <span>to</span>
-                                        <input type="time" value="17:00">
-                                    </div>
-                                    <div class="day-hours">
-                                        <span>Fri:</span>
-                                        <input type="time" value="09:00">
-                                        <span>to</span>
-                                        <input type="time" value="17:00">
-                                    </div>
-                                </div>
-                                <small>Specify your availability for each working day.</small>
-                            </div>
-                            <div class="form-group full-width">
-                                <label>ID/License Verification Documents</label>
-                                <div class="file-upload">
-                                    <input type="file" id="document-upload" hidden>
-                                    <label for="document-upload" class="upload-area">
-                                        <span>📄</span>
-                                        <p>Upload your official ID or service license for verification</p>
-                                        <small>Max file size: 5MB</small>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn-primary">Save Service Provider Details</button>
-                    </div>
+
 
                     <!-- Security & Preferences Section -->
                     <div class="profile-section">
@@ -183,13 +113,10 @@
                             </div>
                         </div>
                     </div>
-
-                    <button class="btn-danger">🚪 Log Out</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="js/profile.js"></script>
 </body>
-</html> 
+
+</html>

@@ -23,18 +23,13 @@
             <span>📅</span>
             <span>Bookings</span>
         </a>
-        <a href="reviews.php"
-            class="<?php echo strpos($current_uri, 'dashboard.php') !== false ? 'active' : ''; ?>">
-            <span>⭐</span>
-            <span>Feedback</span>
-        </a>
-        <a href="job-history.php"
-            class="<?php echo strpos($current_uri, 'dashboard.php') !== false ? 'active' : ''; ?>">
+        <a href="/merosewa/app/provider/jobs/"
+            class="<?php echo strpos($current_uri, '/jobs/') !== false ? 'active' : ''; ?>">
             <span>📋</span>
-            <span>Job History</span>
+            <span>My Jobs</span>
         </a>
-        <a href="profile.php"
-            class="<?php echo strpos($current_uri, 'dashboard.php') !== false ? 'active' : ''; ?>">
+        <a href="/merosewa/app/provider/profile/"
+            class="<?php echo strpos($current_uri, '/profile/') !== false ? 'active' : ''; ?>">
             <span>👤</span>
             <span>Profile</span>
         </a>

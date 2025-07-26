@@ -1,3 +1,8 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/merosewa/app/models/SessionUser.php';
+$username = SessionUser::getUserName();
+?>
+
 <!-- Header -->
 <header>
     <div>

@@ -167,19 +167,20 @@ require_once '../../helpers/redirect-to-login.php';
 
         td {
             padding: 16px;
-            text-align: center;
+            text-align: left;
             vertical-align: middle;
         }
 
         .btn-link-accept,
         .btn-link-complete {
             background: none;
-            border: 1px solid #38a169;
+            border: 2px solid #38a169;
             color: #38a169;
-            padding: 4px 8px;
-            border-radius: 3px;
+            padding: 8px 12px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
             text-decoration: none;
             display: inline-block;
             transition: all 0.2s;
@@ -187,12 +188,13 @@ require_once '../../helpers/redirect-to-login.php';
 
         .btn-link-cancel {
             background: none;
-            border: 1px solid #ed1f11;
+            border: 2px solid #ed1f11;
             color: #ed1f11;
-            padding: 4px 8px;
-            border-radius: 3px;
+            padding: 8px 12px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
             text-decoration: none;
             display: inline-block;
             transition: all 0.2s;
@@ -290,7 +292,7 @@ require_once '../../helpers/redirect-to-login.php';
                             <div class="booking-message">${booking.message}</div>
                         </td>
                         <td>${booking.booking_date}</td>
-                        <td style="height:100%; display: flex; align-items: center; justify-content: center;">
+                        <td>
                             <span class="status-badge ${statusClass}">${booking.status}</span>
                         </td>
                         <td>
@@ -298,28 +300,24 @@ require_once '../../helpers/redirect-to-login.php';
                         </td>
                     </tr>`;
                 tbody.append(row);
+                $('.btn-link-complete').off('click').on('click', function() {
+                    var bookingId = $(this).data('id');
+                    window.location.href = `/merosewa/app/provider/jobs/create.php?id=${bookingId}`;
+                });
                 $('.btn-link-accept').off('click').on('click', function() {
                     var bookingId = $(this).data('id');
-                    acceptBooking(bookingId);
-
+                    window.location.href = `accept.php?id=${bookingId}`;
                 });
                 $('.btn-link-cancel').off('click').on('click', function() {
                     var bookingId = $(this).data('id');
                     const confirmed = confirm("Are you sure you want to cancel this booking?");
                     if (confirmed) {
-                        cancelBooking(bookingId);
+                        window.location.href = `cancel.php?id=${bookingId}`;
                     }
                 });
             });
         }
 
-        function acceptBooking(bookingId) {
-            window.location.href = `accept.php?id=${bookingId}`;
-        }
-
-        function cancelBooking(bookingId) {
-            window.location.href = `cancel.php?id=${bookingId}`;
-        }
         populateArchivedBookings = (bookings) => {
             const tbody = $('#archived-bookings-body');
             tbody.empty();
@@ -341,7 +339,7 @@ require_once '../../helpers/redirect-to-login.php';
                     <div class="booking-message">${booking.message}</div>
                 </td>
                 <td>${booking.booking_date}</td>
-                <td style="display: flex; align-items: center; justify-content: center;">
+                <td>
                     <span class="status-badge ${statusClass}">${booking.status}</span>
                 </td>
             </tr>

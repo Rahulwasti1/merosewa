@@ -1,7 +1,5 @@
 <?php
 require_once '../../helpers/redirect-to-login.php';
-require_once '../../models/SessionUser.php';
-$username = SessionUser::getUsername();
 ?>
 <!DOCTYPE html>
 <html lang="en">
