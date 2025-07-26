@@ -84,6 +84,20 @@ require_once '../../helpers/redirect-to-login.php';
                 </div>
 
                 <div class="job-history-table">
+                    <!-- Success and Error Messages -->
+                    <?php if (isset($_SESSION['success_message'])): ?>
+                        <span style="color: green; display: block; margin: 10px 0;">
+                            <?= htmlspecialchars($_SESSION['success_message']) ?>
+                        </span>
+                        <?php unset($_SESSION['success_message']); // Clear the message
+                        ?>
+                    <?php elseif (isset($_SESSION['error_message'])): ?>
+                        <span style="color: red; display: block; margin: 10px 0;">
+                            <?= htmlspecialchars($_SESSION['error_message']) ?>
+                        </span>
+                        <?php unset($_SESSION['error_message']); // Clear the message
+                        ?>
+                    <?php endif; ?>
                     <table>
                         <thead>
                             <tr>
@@ -154,6 +168,24 @@ require_once '../../helpers/redirect-to-login.php';
             border-bottom: 1px solid #ddd;
         }
 
+        .btn-view-feedback {
+            border: 2px solid #959;
+            color: #959;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-view-feedback:hover {
+            background-color: #616;
+            color: white;
+        }
+
         .feedback-modal {
             position: fixed;
             top: 0;
@@ -221,7 +253,7 @@ require_once '../../helpers/redirect-to-login.php';
             const total = jobs.length;
             const earnings = jobs.reduce((sum, job) => sum + job.earnings, 0);
             const time = jobs.reduce((sum, job) => sum + job.duration, 0);
-            $('#total-jobs').text(0);
+            $('#total-jobs').text(jobs.length);
             $('#total-earnings').text(`Rs. ${earnings}`);
             $('#total-time').text(`${time} mins`);
         }
@@ -232,7 +264,7 @@ require_once '../../helpers/redirect-to-login.php';
 
             jobs.forEach(job => {
                 const feedbackBtn = job.feedback && job.feedback.trim() !== '' ?
-                    `<span style="color: #959;cursor: pointer;" onclick='viewFeedback(${JSON.stringify(job.feedback)})'>View Feedback</span>` :
+                    `<button class="btn-view-feedback" onclick='viewFeedback(${JSON.stringify(job.feedback)})'>View Feedback</button>` :
                     `<span style="color: #999;">No Feedback</span>`;
                 const row =
                     `<tr>

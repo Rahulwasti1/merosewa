@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -61,13 +62,6 @@
                     <i class="fas fa-history"></i>
                     <span>Job History</span>
                 </a>
-
-                <a href="/merosewa/app/consumer/feedbacks/"
-                    class="<?php echo strpos($current_uri, '/feedback/') !== false ? 'active nav-link' : 'nav-link'; ?>">
-                    <i class="fa-solid fa-comment"></i>
-                    <span>Feedbacks</span>
-                </a>
-
                 <a href="/merosewa/app/consumer/profile/"
                     class="<?php echo strpos($current_uri, '/profile/') !== false ? 'active nav-link' : 'nav-link'; ?>">
                     <i class="fas fa-user-circle"></i>
