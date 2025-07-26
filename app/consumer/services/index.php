@@ -1,7 +1,7 @@
 <?php
-session_start();
-// $db = new Database();
-ob_start();
+require_once '../../helpers/redirect-to-login.php';
+$_SESSION['page_title'] = "MeroSewa - All Services";
+ob_start()
 ?>
 <!-- Success and Error Messages -->
 <?php if (isset($_SESSION['success_message'])): ?>

@@ -11,7 +11,8 @@ require_once '../helpers/redirect-to-login.php';
     <title>MeroSewa - Dashboard</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
-
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,7 +143,6 @@ require_once '../helpers/redirect-to-login.php';
                 </div>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="js/dashboard.js"></script>
 </body>

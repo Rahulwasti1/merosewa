@@ -28,7 +28,8 @@ $pageTitle = 'Edit Service Details';
     <title>MeroSewa - Edit Service</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/merosewa/public/assets/logo.png">
-
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,7 +126,7 @@ $pageTitle = 'Edit Service Details';
                             <!-- Cancel Button -->
                             <a href="index.php"
                                 class="block w-full text-center text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">
-
+                                Back
                             </a>
                         </form>
                     </div>

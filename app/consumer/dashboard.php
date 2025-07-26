@@ -1,5 +1,6 @@
 <?php
 require_once '../helpers/redirect-to-login.php';
+$_SESSION['page_title'] = "MeroSewa - Dashboard";
 ob_start();
 ?>
 

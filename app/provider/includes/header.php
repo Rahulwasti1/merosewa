@@ -16,7 +16,7 @@ $username = SessionUser::getUserName();
             <span class="badge">3</span>
         </div>
         <a href="/merosewa/app/logout-action.php" class="logout">
-            <span>🚪</span>
+            <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span>
         </a>
     </div>
