@@ -3,7 +3,10 @@ require_once '../../helpers/redirect-to-login.php';
 require_once '../../models/SessionUser.php';
 require_once '../../../Database.php';
 
-
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /merosewa/app/provider/bookings/');
+    exit;
+}
 unset($_SESSION['success_message'], $_SESSION['error_message']);
 $bookingId = $_GET['id'] ?? null;
 if (null === $bookingId) {

@@ -4,6 +4,10 @@ require_once '../../models/SessionUser.php';
 require_once '../../../Database.php';
 require_once '../../../Upload.php';
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.php');
+    exit;
+}
 // Clear old session messages on new request
 unset($_SESSION['pw_success_message'], $_SESSION['pw_error_message']);
 try {

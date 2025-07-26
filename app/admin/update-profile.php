@@ -4,6 +4,10 @@ require_once '../models/SessionUser.php';
 require_once '../../Database.php';
 require_once '../../Upload.php';
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: dashboard.php');
+    exit;
+}
 // Clear old session messages on new request
 unset($_SESSION['success_message'], $_SESSION['error_message']);
 try {
