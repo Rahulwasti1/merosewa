@@ -3,10 +3,6 @@ require_once '../../helpers/redirect-to-login.php';
 require_once '../../models/SessionUser.php';
 require_once '../../../Database.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
-    exit;
-}
 // Clear old session messages on new request
 unset($_SESSION['success_message'], $_SESSION['error_message']);
 try {
